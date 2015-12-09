@@ -1,8 +1,13 @@
+package Ventanas;
+
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Juego.Jugador;
+
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
@@ -13,24 +18,33 @@ import java.awt.event.ActionEvent;
 /*
  * Definición de la clase mediante la palabra reservada Jugador 
  **/
-public class Jugador extends JFrame{
+public class Login extends JFrame{
 	
 	
 	//PROPIEDADES
 	private JPanel contentPane;
-	private String Nombre;
-	private String Apellido;
-	private int Puntos;
-	private int Edad;
 	private JTextField textoNombre;
 	private JTextField textoApellidos;
 	private JTextField textoEdad;
-	private JButton botonDatos;
+	//Creamos la referencia a Juego
+	private Juego juego1;
+	//Creamos la referencia a Login
+	private Login cerrar;
+	
+	JButton botonDatos;
+	
+	//Creamos objeto Jugador
+	private Jugador j1;
 	
 	// Constructor
 	// Punto de entrada que se ejecuta al crear un objeto de tipo Juagador
-	public Jugador() {
+	public Login(Juego jugador1) {
+			
+		//Hacemos referencia cerrar
+			cerrar=this;
 		
+		//Hacemos referncia a juego1
+			juego1= jugador1;
 		
 		//Las propiedades de nuestra ventana
 				setTitle("JUGADOR");
@@ -94,64 +108,29 @@ public class Jugador extends JFrame{
 				botonDatos.addActionListener(new ActionListener() {
 		//Acción del evento			
 					public void actionPerformed(ActionEvent arg0) {
+						
 						if ((textoNombre.getText().length()==0)||(textoApellidos.getText().length()==0)||(textoEdad.getText().length()==0)) {//comparamos si las cajas de texto están vacias
 							textoDatos.setText("Algún campo por rellenar");
 						}else{
-							setNombre(textoNombre.getText());
-							setApellido(textoApellidos.getText());
+						
+							j1.setNombre(textoNombre.getText());
+							j1.setApellido(textoApellidos.getText());
 							String EdadString=textoEdad.getText();
 							int edad=Integer.valueOf(EdadString);
-							setEdad(edad);
-							textoDatos.setText("Player "+getNombre()+" "+getApellido()+" de edad "+getEdad()+" ha sido generado");
+							j1.setEdad(edad);
+							//Enviamos los datos a la ventana Juego
+							Juego.juegoJtext.setText("Bienvenido al juego "+j1.getNombre());
+							//Cerramos la ventana Login
+							cerrar.setVisible(false);
+							//Abrimos la ventana Juego
+							juego1.setVisible(true);
 						}
 					}
 				});
 				botonDatos.setBounds(12, 189, 408, 25);
 				contentPane.add(botonDatos);
-			
+	j1=new Jugador();
 				
+		
 	}
-	//FUNCIONES O METODOS
-	//public OUT nombreMetodo (IN)
-
-	//DEFINO EL METODO Nombre
-	public String getNombre() {
-		return Nombre;
-	}
-
-
-	public void setNombre(String nombre) {
-		this.Nombre = nombre;
-	}
-
-	//DEFINO EL METODO Apellido
-	public String getApellido() {
-		return Apellido;
-	}
-
-
-	public void setApellido(String apellido) {
-		this.Apellido = apellido;
-	}
-
-	//DEFINO EL METODO Edad
-	public int getEdad() {
-		return Edad;
-	}
-
-	
-	public void setEdad(int edad) {
-		this.Edad = edad;
-	}
-
-	//DEFINO EL METODO Puntos
-	public int getPuntos() {
-		return Puntos;
-	}
-
-
-	public void setPuntos(int puntos) {
-		this.Puntos = puntos;
-	}
-	
 }
