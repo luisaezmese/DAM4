@@ -12,8 +12,8 @@ public class Principal {
 	 */
 	public static void main(String[] args) {
 		
-			Juego juego1 = new Juego();
-			Login ventana = new Login(juego1);
+			//Juego juego1 = new Juego();
+			Login ventana = new Login();
 			ventana.setVisible(true);
 	}
 

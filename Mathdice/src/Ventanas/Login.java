@@ -31,20 +31,23 @@ public class Login extends JFrame{
 	//Creamos la referencia a Login
 	private Login cerrar;
 	
+	
 	JButton botonDatos;
 	
 	//Creamos objeto Jugador
 	private Jugador j1;
 	
+	
 	// Constructor
 	// Punto de entrada que se ejecuta al crear un objeto de tipo Juagador
-	public Login(Juego jugador1) {
+	public Login() {
 			
 		//Hacemos referencia cerrar
 			cerrar=this;
 		
-		//Hacemos referncia a juego1
-			juego1= jugador1;
+		
+		//Hacemos referencia a juego1
+			//juego1= jugador1;
 		
 		//Las propiedades de nuestra ventana
 				setTitle("JUGADOR");
@@ -112,25 +115,35 @@ public class Login extends JFrame{
 						if ((textoNombre.getText().length()==0)||(textoApellidos.getText().length()==0)||(textoEdad.getText().length()==0)) {//comparamos si las cajas de texto están vacias
 							textoDatos.setText("Algún campo por rellenar");
 						}else{
-						
+							j1=new Jugador();
+							juego1=new Juego(j1);
 							j1.setNombre(textoNombre.getText());
 							j1.setApellido(textoApellidos.getText());
 							String EdadString=textoEdad.getText();
 							int edad=Integer.valueOf(EdadString);
 							j1.setEdad(edad);
+							
+							juego1.setJugador(j1);
+							
 							//Enviamos los datos a la ventana Juego
-							Juego.juegoJtext.setText("Bienvenido al juego "+j1.getNombre());
+							//Juego.juegoJtext.setText("Bienvenido al juego "+j1.getNombre());
+							
 							//Cerramos la ventana Login
 							cerrar.setVisible(false);
 							//Abrimos la ventana Juego
 							juego1.setVisible(true);
+							
+						
+								
+							
+							
 						}
 					}
 				});
 				botonDatos.setBounds(12, 189, 408, 25);
 				contentPane.add(botonDatos);
-	j1=new Jugador();
-				
+	
+			;			
 		
 	}
 }
