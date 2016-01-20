@@ -46,9 +46,6 @@ public class Login extends JFrame{
 			cerrar=this;
 		
 		
-		//Hacemos referencia a juego1
-			//juego1= jugador1;
-		
 		//Las propiedades de nuestra ventana
 				setTitle("JUGADOR");
 				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -124,9 +121,6 @@ public class Login extends JFrame{
 							j1.setEdad(edad);
 							
 							juego1.setJugador(j1);
-							
-							//Enviamos los datos a la ventana Juego
-							//Juego.juegoJtext.setText("Bienvenido al juego "+j1.getNombre());
 							
 							//Cerramos la ventana Login
 							cerrar.setVisible(false);
