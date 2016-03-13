@@ -110,7 +110,9 @@ public class Login extends JFrame{
 					public void actionPerformed(ActionEvent arg0) {
 						
 						if ((textoNombre.getText().length()==0)||(textoApellidos.getText().length()==0)||(textoEdad.getText().length()==0)) {//comparamos si las cajas de texto están vacias
-							textoDatos.setText("Algún campo por rellenar");
+						
+						textoDatos.setText("Algún campo por rellenar");
+						
 						}else{
 							j1=new Jugador();
 							juego1=new Juego(j1);
