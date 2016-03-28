@@ -23,9 +23,10 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Dimension;
 
-public class Juego extends JFrame {
-
+public class Juego extends JPanel{
+	
 	private JPanel contentPane;
 	JLabel saludo;
 	JLabel eti;
@@ -79,21 +80,22 @@ public class Juego extends JFrame {
 	 * Create the frame.
 	 */
 
-	public Juego(Jugador p) {
-		setTitle("JUEGO");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(50, 50, 1500,900);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
+	public Juego(Jugador player) {
+		
+		//setTitle("JUEGO");
+		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//setBounds(50, 50, 1500,900);
+		//contentPane = new JPanel();
+		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		//setContentPane(contentPane);
+		setLayout(null);
 		
 		
 		saludo = new JLabel();
 		saludo.setFont(new Font("Stencil", Font.PLAIN, 25));
 		saludo.setHorizontalAlignment(SwingConstants.CENTER);
 		saludo.setBounds(860, 13, 554, 65);
-		contentPane.add(saludo);
+		add(saludo);
 		
 
 		
@@ -102,7 +104,7 @@ public class Juego extends JFrame {
 		etiquetaoperaciones.setEditable(false);
 		etiquetaoperaciones.setFont(new Font("Stencil", Font.PLAIN, 25));
 		etiquetaoperaciones.setBounds(907, 208, 481, 76);
-		contentPane.add(etiquetaoperaciones);
+		add(etiquetaoperaciones);
 		etiquetaoperaciones.setColumns(10);
 		
 		
@@ -122,7 +124,7 @@ public class Juego extends JFrame {
 		});
 		botonsumar.setFont(new Font("Stencil", Font.PLAIN, 25));
 		botonsumar.setBounds(907, 91, 154, 104);
-		contentPane.add(botonsumar);
+		add(botonsumar);
 		
 		//Botón para RESTAR
 		JButton botonrestar = new JButton("-");
@@ -137,14 +139,14 @@ public class Juego extends JFrame {
 		});
 		botonrestar.setFont(new Font("Stencil", Font.PLAIN, 25));
 		botonrestar.setBounds(1234, 91, 154, 104);
-		contentPane.add(botonrestar);
+		add(botonrestar);
 		
 		//Etiqueta para mostrar el resultado de las operaciones
 		etiquetaresultado = new JLabel("");
 		etiquetaresultado.setFont(new Font("Tahoma", Font.BOLD, 30));
 		etiquetaresultado.setEnabled(false);
 		etiquetaresultado.setBounds(907, 414, 494, 50);
-		contentPane.add(etiquetaresultado);
+		add(etiquetaresultado);
 		
 		//Cargamos las imagenes en los arrays
 		for(int i=0;i<dados3.length;i++){
@@ -166,21 +168,21 @@ public class Juego extends JFrame {
 			alerojo1= aleatorio.nextInt(3);// número aleatorio para el dado1 rojo	
 			labeldado1_rojo.setIcon(dados3[alerojo1]);//pasamos la imagen correspondiente a la etiqueta dado 1 rojo
 			labeldado1_rojo.setBounds(50, 50, 200, 200);
-			contentPane.add(labeldado1_rojo);
+			add(labeldado1_rojo);
 			
 			
 			labeldado2_rojo = new JLabel();
 			alerojo2= aleatorio.nextInt(3);// número aleatorio para el dado2 rojo	
 			labeldado2_rojo.setIcon(dados3[alerojo2]);//pasamos la imagen correspondiente a la etiqueta dado 2 rojo
 			labeldado2_rojo.setBounds(300, 50, 200, 200);
-			contentPane.add(labeldado2_rojo);
+			add(labeldado2_rojo);
 			
 			
 			labeldado3_rojo = new JLabel();
 			alerojo3= aleatorio.nextInt(3);// número aleatorio para el dado3 rojo	
 			labeldado3_rojo.setIcon(dados3[alerojo3]);//pasamos la imagen correspondiente a la etiqueta dado 3 rojo
 			labeldado3_rojo.setBounds(550, 50, 200, 200);
-			contentPane.add(labeldado3_rojo);
+			add(labeldado3_rojo);
 			
 			
 			
@@ -189,14 +191,14 @@ public class Juego extends JFrame {
 			aleazul1= aleatorio.nextInt(6);// número aleatorio para el dado1 azul	
 			labeldado1_azul.setIcon(dados6[aleazul1]);//pasamos la imagen correspondiente a la etiqueta dado 1 azul
 			labeldado1_azul.setBounds(50, 300, 200, 200);
-			contentPane.add(labeldado1_azul);
+			add(labeldado1_azul);
 			
 			
 			labeldado2_azul = new JLabel();
 			aleazul2= aleatorio.nextInt(6);// número aleatorio para el dado2 azul	
 			labeldado2_azul.setIcon(dados6[aleazul2]);//pasamos la imagen correspondiente a la etiqueta dado 2 azul
 			labeldado2_azul.setBounds(300, 300, 200, 200);
-			contentPane.add(labeldado2_azul);
+			add(labeldado2_azul);
 			
 			
 			//Etiqueta de las imagenes DADO VERDE del 1 al 12
@@ -204,7 +206,7 @@ public class Juego extends JFrame {
 			aleverde1= aleatorio.nextInt(12);// número aleatorio para el dado1 verde	
 			labeldado1_verde.setIcon(dados12[aleverde1]);//pasamos la imagen correspondiente a la etiqueta dado 1 verde
 			labeldado1_verde.setBounds(50,550,200, 200);
-			contentPane.add(labeldado1_verde);
+			add(labeldado1_verde);
 		
 		
 
@@ -234,7 +236,7 @@ public class Juego extends JFrame {
 					);
 				botonMathdice.setFont(new Font("Stencil", Font.PLAIN, 25));
 				botonMathdice.setBounds(907, 325, 494, 76);
-				contentPane.add(botonMathdice);
+				add(botonMathdice);
 				
 				//Listener para el boton_REPETIR
 				botonrepetir = new JButton("REPETIR");
@@ -247,7 +249,7 @@ public class Juego extends JFrame {
 					});
 				botonrepetir.setFont(new Font("Tahoma", Font.BOLD, 16));
 				botonrepetir.setBounds(907, 562, 484, 59);
-				contentPane.add(botonrepetir);
+				add(botonrepetir);
 				
 				
 				
@@ -257,6 +259,11 @@ public class Juego extends JFrame {
 		
 	}
 	
+	private void setContentPane(Juego contentPane2) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public void setJugador(Jugador j1){
 		
 		this.player=j1;

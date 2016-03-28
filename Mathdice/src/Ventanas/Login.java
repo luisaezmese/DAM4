@@ -24,10 +24,12 @@ public class Login extends JFrame{
 	//PROPIEDADES
 	private JPanel contentPane;
 	private JTextField textoNombre;
-	private JTextField textoApellidos;
+	private JTextField textoApellido1;
+	private JTextField textoApellido2;
 	private JTextField textoEdad;
 	//Creamos la referencia a Juego
 	private Juego juego1;
+	private Contenedor conten1;
 	//Creamos la referencia a Login
 	private Login cerrar;
 	
@@ -51,7 +53,7 @@ public class Login extends JFrame{
 				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 		//Dimensiones de nuestra ventana		
-				setBounds(100, 100, 450, 360);
+				setBounds(100, 100, 450, 384);
 				contentPane = new JPanel();
 				contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 				
@@ -69,14 +71,19 @@ public class Login extends JFrame{
 				etiquetaNombre.setBounds(12, 61, 140, 16);
 				contentPane.add(etiquetaNombre);
 				
-		//Añadimos la etiqueta Apellidos
-				JLabel etiquetasApellidos = new JLabel("Apellidos");
-				etiquetasApellidos.setBounds(12, 108, 72, 16);
-				contentPane.add(etiquetasApellidos);
+		//Añadimos la etiqueta Apellido1
+				JLabel etiquetasApellido1 = new JLabel("Apellido1");
+				etiquetasApellido1.setBounds(12, 108, 72, 16);
+				contentPane.add(etiquetasApellido1);
+				
+		//Añadimos la etiqueta Apellido2
+				JLabel etiquetasApellido2 = new JLabel("Apellido2");
+				etiquetasApellido2.setBounds(12, 156, 72, 16);
+				contentPane.add(etiquetasApellido2);
 		
 		//Añadimos la etiqueta Edad
 				JLabel etiquetaEdad = new JLabel("Edad");
-				etiquetaEdad.setBounds(12, 156, 72, 16);
+				etiquetaEdad.setBounds(12, 203, 72, 16);
 				contentPane.add(etiquetaEdad);
 				
 		//Añadimos cuadro de texto Nombre
@@ -85,21 +92,28 @@ public class Login extends JFrame{
 				contentPane.add(textoNombre);
 				textoNombre.setColumns(10);
 				
-		//Añadimos cuadro de texto Apellidos	
-				textoApellidos = new JTextField();
-				textoApellidos.setColumns(10);
-				textoApellidos.setBounds(81, 105, 226, 22);
-				contentPane.add(textoApellidos);
+		//Añadimos cuadro de texto Apellidos1	
+				textoApellido1 = new JTextField();
+				textoApellido1.setColumns(10);
+				textoApellido1.setBounds(81, 105, 226, 22);
+				contentPane.add(textoApellido1);
+				
+
+		//Añadimos cuadro de texto Apellidos1					
+				textoApellido2 = new JTextField();
+				textoApellido2.setColumns(10);
+				textoApellido2.setBounds(81, 153, 226, 22);
+				contentPane.add(textoApellido2);
 				
 		//Añadimos cuadro de texto Edad		
 				textoEdad = new JTextField();
 				textoEdad.setColumns(10);
-				textoEdad.setBounds(81, 153, 226, 22);
+				textoEdad.setBounds(81, 200, 226, 22);
 				contentPane.add(textoEdad);
 		
 		//Añadimos caja de texto Datos
 				JTextArea textoDatos = new JTextArea();
-				textoDatos.setBounds(12, 227, 408, 73);
+				textoDatos.setBounds(12, 273, 408, 51);
 				contentPane.add(textoDatos);
 				
 		//Añadimos botón de Datos
@@ -109,25 +123,26 @@ public class Login extends JFrame{
 		//Acción del evento			
 					public void actionPerformed(ActionEvent arg0) {
 						
-						if ((textoNombre.getText().length()==0)||(textoApellidos.getText().length()==0)||(textoEdad.getText().length()==0)) {//comparamos si las cajas de texto están vacias
+						if ((textoNombre.getText().length()==0)||(textoApellido1.getText().length()==0)||(textoApellido2.getText().length()==0)||(textoEdad.getText().length()==0)) {//comparamos si las cajas de texto están vacias
 						
 						textoDatos.setText("Algún campo por rellenar");
 						
 						}else{
 							j1=new Jugador();
-							juego1=new Juego(j1);
+							conten1=new Contenedor();
 							j1.setNombre(textoNombre.getText());
-							j1.setApellido(textoApellidos.getText());
+							j1.setApellido1(textoApellido1.getText());
+							j1.setApellido2(textoApellido2.getText());
 							String EdadString=textoEdad.getText();
 							int edad=Integer.valueOf(EdadString);
 							j1.setEdad(edad);
 							
-							juego1.setJugador(j1);
+							//juego1.setJugador(j1);
 							
 							//Cerramos la ventana Login
 							cerrar.setVisible(false);
 							//Abrimos la ventana Juego
-							juego1.setVisible(true);
+							conten1.setVisible(true);
 							
 						
 								
@@ -136,8 +151,10 @@ public class Login extends JFrame{
 						}
 					}
 				});
-				botonDatos.setBounds(12, 189, 408, 25);
+				botonDatos.setBounds(12, 235, 408, 25);
 				contentPane.add(botonDatos);
+				
+			
 	
 			;			
 		
