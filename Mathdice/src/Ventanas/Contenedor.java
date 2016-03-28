@@ -28,6 +28,8 @@ public class Contenedor extends JFrame {
 		
 		Juego v1=new Juego(player);
 		Perfil v2=new Perfil();
+		
+		
 
 
 	/**
