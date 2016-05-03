@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Juego.Jugador;
+import Modelo.confDB;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -18,7 +19,7 @@ import java.awt.event.ActionEvent;
 /*
  * Definición de la clase mediante la palabra reservada Jugador 
  **/
-public class Login extends JFrame{
+public class Registro extends JFrame{
 	
 	
 	//PROPIEDADES
@@ -28,11 +29,14 @@ public class Login extends JFrame{
 	private JTextField textoApellido2;
 	private JTextField textoEdad;
 	//Creamos la referencia a Juego
-	private Juego juego1;
+	private Perfil juego1;
 	private Contenedor conten1;
 	//Creamos la referencia a Login
-	private Login cerrar;
+	private Registro cerrar;
 	
+	//Manejador de la BBDD
+	private confDB db;
+	private Jugador udb;
 	
 	JButton botonDatos;
 	
@@ -42,7 +46,7 @@ public class Login extends JFrame{
 	
 	// Constructor
 	// Punto de entrada que se ejecuta al crear un objeto de tipo Juagador
-	public Login() {
+	public Registro() {
 			
 		//Hacemos referencia cerrar
 			cerrar=this;
@@ -128,21 +132,20 @@ public class Login extends JFrame{
 						textoDatos.setText("Algún campo por rellenar");
 						
 						}else{
-							j1=new Jugador();
+						
+							//j1=new Jugador();
+							juego1=new Perfil();
 							conten1=new Contenedor();
-							j1.setNombre(textoNombre.getText());
-							j1.setApellido1(textoApellido1.getText());
-							j1.setApellido2(textoApellido2.getText());
-							String EdadString=textoEdad.getText();
-							int edad=Integer.valueOf(EdadString);
-							j1.setEdad(edad);
+							udb.insertarUsuario(textoNombre.getText(),textoApellido1.getText(),textoApellido2.getText(),Integer.valueOf(textoEdad.getText()));
 							
-							//juego1.setJugador(j1);
 							
+							juego1.setPlayer(udb);
+														
 							//Cerramos la ventana Login
 							cerrar.setVisible(false);
 							//Abrimos la ventana Juego
 							conten1.setVisible(true);
+							
 							
 						
 								
@@ -154,9 +157,10 @@ public class Login extends JFrame{
 				botonDatos.setBounds(12, 235, 408, 25);
 				contentPane.add(botonDatos);
 				
-			
+			db = new confDB();
+			udb = new Jugador(db.getConexion());
 	
-			;			
+					
 		
 	}
 }

@@ -1,6 +1,6 @@
 package Principal;
 import Ventanas.Juego;
-import Ventanas.Login;
+import Ventanas.Registro;
 
 //Las variables o propiedades
 public class Principal {
@@ -13,7 +13,7 @@ public class Principal {
 	public static void main(String[] args) {
 		
 			//Juego juego1 = new Juego();
-			Login ventana = new Login();
+			Registro ventana = new Registro();
 			ventana.setVisible(true);
 	}
 

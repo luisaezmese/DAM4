@@ -91,11 +91,11 @@ public class Juego extends JPanel{
 		setLayout(null);
 		
 		
-		saludo = new JLabel();
-		saludo.setFont(new Font("Stencil", Font.PLAIN, 25));
-		saludo.setHorizontalAlignment(SwingConstants.CENTER);
-		saludo.setBounds(860, 13, 554, 65);
-		add(saludo);
+		//saludo = new JLabel();
+		//saludo.setFont(new Font("Stencil", Font.PLAIN, 25));
+		//saludo.setHorizontalAlignment(SwingConstants.CENTER);
+		//saludo.setBounds(860, 13, 554, 65);
+		//add(saludo);
 		
 
 		
@@ -259,16 +259,12 @@ public class Juego extends JPanel{
 		
 	}
 	
-	private void setContentPane(Juego contentPane2) {
-		// TODO Auto-generated method stub
+	
+//	public void setJugador(Jugador j1){
 		
-	}
-
-	public void setJugador(Jugador j1){
-		
-		this.player=j1;
-		saludo.setText("Bienvenido al juego "+j1.getNombre());
-	}
+//		this.player=j1;
+//		saludo.setText("Bienvenido al juego "+j1.getNombre());
+//	}
 	
 	public void enviartexto (String a){
 		
