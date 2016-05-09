@@ -22,14 +22,13 @@ import java.awt.event.ActionEvent;
 public class Registro extends JFrame{
 	
 	
-	//PROPIEDADES
+	//PROPIEDADES	
 	private JPanel contentPane;
-	private JTextField textoNombre;
-	private JTextField textoApellido1;
-	private JTextField textoApellido2;
-	private JTextField textoEdad;
+	JTextField textoNombre;
+	JTextField textoApellido1;
+	JTextField textoApellido2;
+	JTextField textoEdad;
 	//Creamos la referencia a Juego
-	private Perfil juego1;
 	private Contenedor conten1;
 	//Creamos la referencia a Login
 	private Registro cerrar;
@@ -39,9 +38,7 @@ public class Registro extends JFrame{
 	private Jugador udb;
 	
 	JButton botonDatos;
-	
-	//Creamos objeto Jugador
-	private Jugador j1;
+
 	
 	
 	// Constructor
@@ -132,35 +129,36 @@ public class Registro extends JFrame{
 						textoDatos.setText("Algún campo por rellenar");
 						
 						}else{
-						
-							//j1=new Jugador();
-							juego1=new Perfil();
+							
+							
 							conten1=new Contenedor();
+							
+							//Insertamos los datos en la BBDD
 							udb.insertarUsuario(textoNombre.getText(),textoApellido1.getText(),textoApellido2.getText(),Integer.valueOf(textoEdad.getText()));
 							
-							
-							juego1.setPlayer(udb);
-														
+					
 							//Cerramos la ventana Login
 							cerrar.setVisible(false);
 							//Abrimos la ventana Juego
-							conten1.setVisible(true);
+							conten1.setVisible(true);	
 							
-							
-						
-								
-							
-							
+							//Enviamos los  datos a Perfil
+							Perfil.CajaNombre.setText(textoNombre.getText());
+							Perfil.CajaApellido1.setText(textoApellido1.getText());
+							Perfil.CajaApellido2.setText(textoApellido2.getText());
+							Perfil.CajaEdad.setText(textoEdad.getText());
 						}
 					}
 				});
 				botonDatos.setBounds(12, 235, 408, 25);
 				contentPane.add(botonDatos);
-				
+			
+			//Conexión a la BBDD
 			db = new confDB();
+			textoDatos.setText(db.conectar());
 			udb = new Jugador(db.getConexion());
-	
-					
+			
 		
 	}
+
 }

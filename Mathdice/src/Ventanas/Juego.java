@@ -80,7 +80,7 @@ public class Juego extends JPanel{
 	 * Create the frame.
 	 */
 
-	public Juego(Jugador player) {
+	public Juego() {
 		
 		//setTitle("JUEGO");
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

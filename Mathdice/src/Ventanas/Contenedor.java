@@ -19,14 +19,14 @@ import java.awt.event.ActionEvent;
 public class Contenedor extends JFrame {
 
 	private JPanel contentPane;
-	private Jugador player;
+
 	
 		//IDENTIFICADORES
 		final static String VENTANA1= "Ventana 1";
 		final static String VENTANA2= "Ventana 2";
 
 		
-		Juego v1=new Juego(player);
+		Juego v1=new Juego();
 		Perfil v2=new Perfil();
 		
 		

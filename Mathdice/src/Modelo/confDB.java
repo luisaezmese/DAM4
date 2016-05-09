@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class confDB {
-	private Connection connect = null;
+	private Connection connect= null;
 	
 	public confDB() {
 	}
@@ -16,10 +16,12 @@ public class confDB {
 		      Class.forName("com.mysql.jdbc.Driver");
 		      // Setup the connection with the DB
 		      connect = DriverManager
-		          .getConnection("jdbc:mysql:localhost/corredores,root,v8271cu79");
+		          .getConnection("jdbc:mysql://localhost:3306/corredores?user=root&password=v8271cu79");
 		      //Conexion realizada
+		      System.out.println("CONECTADOS CON EXITO");
 		      return null;
 	    } catch (Exception e) {
+	    	System.out.println("ERROR EN LA CONEXIÓN");
 	        return e.getMessage();
 	    } 
 	}
