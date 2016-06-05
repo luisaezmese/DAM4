@@ -42,24 +42,31 @@ public class Contenedor extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
+		//MENU PRINCIPAL VENTANAS
 		JMenu MenuPrincipal = new JMenu("Ventanas");
 		menuBar.add(MenuPrincipal);
 		
 		//MENU PERFIL
 		JMenuItem MenuPerfil = new JMenuItem("Perfil");
+		
 		//VENTANA PERFIL
 		MenuPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				contentPane.add(v1,VENTANA1);
+			//	contentPane.add(v1,VENTANA1);
+				CardLayout c1 = (CardLayout)(contentPane.getLayout());
+				c1.show(contentPane, VENTANA2);
 			}
 		});
 		
 		//MENU JUEGO
 		JMenuItem MenuJuego = new JMenuItem("Juego");
+		
 		//VENTANA JUEGO
 		MenuJuego.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				contentPane.add(v2,VENTANA2);
+				//contentPane.add(v2,VENTANA2);
+				CardLayout c1 = (CardLayout)(contentPane.getLayout());
+				c1.show(contentPane, VENTANA1);
 			}
 		});
 		

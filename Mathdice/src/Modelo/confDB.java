@@ -6,6 +6,10 @@ import java.sql.DriverManager;
 public class confDB {
 	private Connection connect= null;
 	
+	String url = "jdbc:mysql://54.186.234.240/jugadores";
+	String user = "luis";
+	String pw = "v8271cu79";
+	
 	public confDB() {
 	}
 	//Método que conecta a la base de datos devolviendo un null si no hay errores
@@ -16,7 +20,7 @@ public class confDB {
 		      Class.forName("com.mysql.jdbc.Driver");
 		      // Setup the connection with the DB
 		      connect = DriverManager
-		          .getConnection("jdbc:mysql://localhost:3306/corredores?user=root&password=v8271cu79");
+		          .getConnection(url,user,pw);
 		      //Conexion realizada
 		      System.out.println("CONECTADOS CON EXITO");
 		      return null;

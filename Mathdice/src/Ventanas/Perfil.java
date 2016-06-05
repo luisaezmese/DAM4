@@ -14,7 +14,6 @@ public class Perfil extends JPanel {
 	static JTextField CajaApellido1;
 	static JTextField CajaEdad;
 	static JTextField CajaApellido2;
-	private JLabel EtiquetaSaludo;
 	static JTextField CajaNombre;
 	JLabel imagenPerfil;
 
@@ -70,12 +69,6 @@ public class Perfil extends JPanel {
 		CajaEdad.setColumns(10);
 		CajaEdad.setBounds(306, 163, 116, 22);
 		add(CajaEdad);
-		
-		EtiquetaSaludo = new JLabel();
-		EtiquetaSaludo.setHorizontalAlignment(SwingConstants.CENTER);
-		EtiquetaSaludo.setFont(new Font("Stencil", Font.PLAIN, 25));
-		EtiquetaSaludo.setBounds(12, 222, 554, 65);
-		add(EtiquetaSaludo);
 		
 		imagenPerfil = new JLabel();
 		try{

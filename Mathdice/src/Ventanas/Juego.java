@@ -28,9 +28,6 @@ import java.awt.Dimension;
 public class Juego extends JPanel{
 	
 	private JPanel contentPane;
-	JLabel saludo;
-	JLabel eti;
-	private Jugador player;
 	boolean comprobar = true; //para comprobar si se introduce número o signo +-
 	private String a;// para enviar a la caja de texto cada número pulsado
 	int contador=0;
@@ -48,7 +45,7 @@ public class Juego extends JPanel{
 	private ImageIcon[] dados3=new ImageIcon[3];//Dados del 1 al 3
 	private ImageIcon[] dados6=new ImageIcon[6];//Dados del 1 al 6
 	private ImageIcon[] dados12=new ImageIcon[12];//Dados del 1 al 12
-	private ImageIcon dadogris;
+	private ImageIcon dadogris; //Dado para sustituir cada vez que se realiza click en un dado
 	
 	
 	//Declaramos el elemento generador de número pseudoaleatorios
@@ -81,24 +78,9 @@ public class Juego extends JPanel{
 	 */
 
 	public Juego() {
-		
-		//setTitle("JUEGO");
-		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBounds(50, 50, 1500,900);
-		//contentPane = new JPanel();
-		//contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//setContentPane(contentPane);
-		setLayout(null);
-		
-		
-		//saludo = new JLabel();
-		//saludo.setFont(new Font("Stencil", Font.PLAIN, 25));
-		//saludo.setHorizontalAlignment(SwingConstants.CENTER);
-		//saludo.setBounds(860, 13, 554, 65);
-		//add(saludo);
-		
 
-		
+		setLayout(null);
+
 		//Etiqueta texto donde se introducen las sumas y restas
 		etiquetaoperaciones = new JTextField();
 		etiquetaoperaciones.setEditable(false);
@@ -106,7 +88,6 @@ public class Juego extends JPanel{
 		etiquetaoperaciones.setBounds(907, 208, 481, 76);
 		add(etiquetaoperaciones);
 		etiquetaoperaciones.setColumns(10);
-		
 		
 		
 		
@@ -126,6 +107,8 @@ public class Juego extends JPanel{
 		botonsumar.setBounds(907, 91, 154, 104);
 		add(botonsumar);
 		
+		
+		
 		//Botón para RESTAR
 		JButton botonrestar = new JButton("-");
 		botonrestar.addActionListener(new ActionListener() {
@@ -140,6 +123,8 @@ public class Juego extends JPanel{
 		botonrestar.setFont(new Font("Stencil", Font.PLAIN, 25));
 		botonrestar.setBounds(1234, 91, 154, 104);
 		add(botonrestar);
+		
+		
 		
 		//Etiqueta para mostrar el resultado de las operaciones
 		etiquetaresultado = new JLabel("");
@@ -238,6 +223,8 @@ public class Juego extends JPanel{
 				botonMathdice.setBounds(907, 325, 494, 76);
 				add(botonMathdice);
 				
+				
+				
 				//Listener para el boton_REPETIR
 				botonrepetir = new JButton("REPETIR");
 				botonrepetir.addActionListener(new ActionListener(){
@@ -251,20 +238,9 @@ public class Juego extends JPanel{
 				botonrepetir.setBounds(907, 562, 484, 59);
 				add(botonrepetir);
 				
-				
-				
-				inicializarBotones();
-				
-					
+				inicializarBotones();	
 		
 	}
-	
-	
-//	public void setJugador(Jugador j1){
-		
-//		this.player=j1;
-//		saludo.setText("Bienvenido al juego "+j1.getNombre());
-//	}
 	
 	public void enviartexto (String a){
 		
@@ -272,14 +248,15 @@ public class Juego extends JPanel{
 			
 	}
 	
+	//Metodo para realizar el cálculo
 	public void calculo (int c, int cont){
 		int suma=0;
 		int resta=0;
 		if (cont>1){
-			if (operador==1){
+			if (operador==1){//Si operador es 1 es SUMA
 				suma=total+c;
 				total=suma;
-			}else if(operador==0){
+			}else if(operador==0){//Si operador es 0 es RESTA
 				resta=total-c;
 				total=resta;
 			}
@@ -360,6 +337,7 @@ public class Juego extends JPanel{
 			
 	}
 				//Implementación MouseListener a traves de Inner Class
+				//CADA VEZ QUE SE REALIZA CLICK EN UN DADO
 					private class ListenerDados implements MouseListener{
 
 						@Override
