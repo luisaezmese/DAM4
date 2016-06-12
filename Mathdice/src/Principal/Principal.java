@@ -1,7 +1,7 @@
 package Principal;
-import Ventanas.Juego;
+
 import Ventanas.Login;
-import Ventanas.Registro;
+
 
 //Las variables o propiedades
 public class Principal {

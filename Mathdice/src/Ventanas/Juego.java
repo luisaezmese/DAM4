@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Juego.Jugador;
+import Juego.JugadorDB;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -26,6 +27,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Dimension;
 
 public class Juego extends JPanel{
+	
+	private Jugador p;
 	
 	private JPanel contentPane;
 	boolean comprobar = true; //para comprobar si se introduce número o signo +-
@@ -60,6 +63,9 @@ public class Juego extends JPanel{
 	private JLabel labeldado2_azul;
 	private JLabel labeldado1_verde;
 	
+	//Etiqueta Saludo
+	private JLabel etiquetaSaludo;
+	
 	//Caja texto del resultado
 	private JTextField etiquetaoperaciones;
 	
@@ -73,6 +79,7 @@ public class Juego extends JPanel{
 	private JButton botonsumar,botonrestar,botonMathdice;
 	
 	
+	
 	/**
 	 * Create the frame.
 	 */
@@ -80,6 +87,14 @@ public class Juego extends JPanel{
 	public Juego() {
 
 		setLayout(null);
+		
+		//Etiqueta Saludo
+		etiquetaSaludo = new JLabel("");
+		etiquetaSaludo.setBounds(550, 13, 258, 16);
+		add(etiquetaSaludo);
+		
+		
+		
 
 		//Etiqueta texto donde se introducen las sumas y restas
 		etiquetaoperaciones = new JTextField();
@@ -336,6 +351,8 @@ public class Juego extends JPanel{
 		
 			
 	}
+		
+	
 				//Implementación MouseListener a traves de Inner Class
 				//CADA VEZ QUE SE REALIZA CLICK EN UN DADO
 					private class ListenerDados implements MouseListener{
@@ -381,13 +398,16 @@ public class Juego extends JPanel{
 							// TODO Auto-generated method stub
 							
 						}
-		
 						
-			
+						
+					
 		
 		}
-				
-							
+					//METODO PARA SACAR NOMBRE SALUDO
+					public void setJugador(Jugador p){
+						this.p=p;
+						etiquetaSaludo.setText("BIENVENIDO AL JUEGO: "+p.getNombre());
+					}
 }
 
 	

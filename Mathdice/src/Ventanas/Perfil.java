@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Ventanas.Registro;
 import Juego.Jugador;
+import Juego.JugadorDB;
 import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -16,6 +17,7 @@ public class Perfil extends JPanel {
 	static JTextField CajaApellido2;
 	static JTextField CajaNombre;
 	JLabel imagenPerfil;
+	private Jugador j1;
 
 	/**
 	 * Create the panel.
@@ -83,5 +85,13 @@ public class Perfil extends JPanel {
 		
 		
 		
+	}
+	public void rellenaDatos(Jugador j1){
+		
+		CajaNombre.setText(j1.getNombre());
+		CajaApellido1.setText("");
+		CajaApellido2.setText("");
+		CajaEdad.setText("");
+	
 	}
 }

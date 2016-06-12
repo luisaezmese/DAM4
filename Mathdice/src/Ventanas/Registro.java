@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Juego.Jugador;
+import Juego.JugadorDB;
 import Modelo.confDB;
 
 import javax.swing.JLabel;
@@ -35,7 +35,7 @@ public class Registro extends JFrame{
 	
 	//Manejador de la BBDD
 	private confDB db;
-	private Jugador udb;
+	private JugadorDB udb;
 	
 	JButton botonDatos;
 
@@ -156,7 +156,9 @@ public class Registro extends JFrame{
 			//Conexión a la BBDD
 			db = new confDB();
 			textoDatos.setText(db.conectar());
-			udb = new Jugador(db.getConexion());
+			udb = new JugadorDB(db.getConexion());
+			
+	
 			
 		
 	}

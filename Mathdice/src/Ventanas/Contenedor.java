@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Juego.Jugador;
+import Juego.JugadorDB;
 
 import java.awt.CardLayout;
 import javax.swing.JMenuBar;
