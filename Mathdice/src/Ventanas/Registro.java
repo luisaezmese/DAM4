@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.awt.event.ActionEvent;
 
 /*
@@ -156,8 +157,7 @@ public class Registro extends JFrame{
 				contentPane.add(botonDatos);
 			
 			//Conexión a la BBDD
-			db = new confDB();
-			textoDatos.setText(db.conectar());
+			confDB.getConexion();
 			udb = new JugadorDB(db.getConexion());
 			
 			

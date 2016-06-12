@@ -106,10 +106,9 @@ public class Login extends JFrame {
 		
 		
 		//Conexión a la BBDD
-		db = new confDB();
-		db.conectar();
-		udb = new JugadorDB(db.getConexion());
+		confDB.getConexion();
 		
+		udb = new JugadorDB(db.getConexion());
 		//Añadimos todos los usuarios de la BBDD
 		udb.buscarUsuario(comboBox);
 		
