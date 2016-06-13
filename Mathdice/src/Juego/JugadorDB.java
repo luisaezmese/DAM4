@@ -1,6 +1,7 @@
 package Juego;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -70,7 +71,7 @@ public class JugadorDB{
 					ResultSet rs;
 					try{
 					  orden = conexion.createStatement();
-				      String sql = "SELECT id, nombre, apellido1, apellido2, edad FROM usuarios";
+				      String sql = "SELECT id, nombre, apellido1, apellido2, edad, puntos FROM usuarios";
 				      rs = orden.executeQuery(sql);
 				      //Cogemos los usuarios
 				      while(rs.next()){
@@ -80,10 +81,11 @@ public class JugadorDB{
 					      u.setApellido1(rs.getString("apellido1"));
 					      u.setApellido2(rs.getString("apellido2"));
 					      u.setEdad(rs.getInt("edad"));
+					      u.setPuntos(rs.getInt("puntos"));
 					      jc.addItem(u);
 				      }
-				      
 				      //Debemos cerrar la conexion
+				     
 				      rs.close();
 					}catch(SQLException se){
 						      //Se produce un error con la consulta
@@ -92,6 +94,7 @@ public class JugadorDB{
 						      //Se produce cualquier otro error
 						      e.printStackTrace();
 					}finally{
+						/*
 					      //Cerramos los recursos
 					      try{
 					         if(orden!=null)
@@ -104,10 +107,57 @@ public class JugadorDB{
 					      	 }catch(SQLException se){
 					         se.printStackTrace();
 					      	 }//end finally try
+					       
+					      */	
 					}
-					
+					 
 				}
 				
+				
+				//Método que permite buscar actualizar un usuario en la base de datos con un preparedStatement
+				public void actualizarUsuarioPreparada(Jugador u){
+					try{
+					  orden = conexion.createStatement();
+					// create the java mysql update preparedstatement
+				      String sql = "UPDATE usuarios "+
+			                       "SET nombre = ? "+
+			                       ",apellido1 = ? "+
+			                       ",apellido2 = ? "+
+			                       ",edad = ? "+
+			                       ",puntos = ? "+
+				    		       "WHERE id = "+u.getId();
+				      PreparedStatement preparedStmt = conexion.prepareStatement(sql);
+				      preparedStmt.setString(1, u.getNombre());
+				      preparedStmt.setString(2, u.getApellido1());
+				      preparedStmt.setString(3, u.getApellido2());
+				      preparedStmt.setInt(4, u.getEdad());
+				      preparedStmt.setInt(5, u.getPuntos());
+				 
+				      // se ejecuta la consulta
+				      preparedStmt.executeUpdate();
+					}catch(SQLException se){
+						      //Se produce un error con la consulta
+						      se.printStackTrace();
+					}catch(Exception e){
+						      //Se produce cualquier otro error
+						      e.printStackTrace();
+					}finally{
+					      //Cerramos los recursos
+						/*
+					      try{
+					         if(orden!=null)
+					        	 conexion.close();
+					      }catch(SQLException se){
+					      }
+					      try{
+					         if(conexion!=null)
+					        	 conexion.close();
+					      	 }catch(SQLException se){
+					         se.printStackTrace();
+					      	 }//end finally try
+				*/	       
+					}			
+				}		
 				
 
 }

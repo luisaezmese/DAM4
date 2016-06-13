@@ -3,16 +3,18 @@ package Juego;
 public class Jugador {
 	
 	//PROPIEDADES
-		private String nombre;
-		private String apellido1;
-		private String apellido2;
-		private int puntos;
-		private int edad;
+		private String nombre="";
+		private String apellido1="";
+		private String apellido2="";
+		private int puntos=0;
+		private int edad=0;
 		private int id;
+	
+	//CONSTRUCTOR	
+	public Jugador(){
 		
-	//FUNCIONES O METODOS
-	//public OUT nombreMetodo (IN)
-		
+	}
+	
 	//DEFINO EL METODO id
 	public int getId() {
 			return id;

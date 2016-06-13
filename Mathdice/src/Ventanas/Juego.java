@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import Juego.Jugador;
 import Juego.JugadorDB;
+import Modelo.confDB;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -62,7 +63,7 @@ public class Juego extends JPanel{
 	private JLabel labeldado1_verde;
 	
 	//Etiqueta Saludo
-	private JLabel etiquetaSaludo;
+	static JLabel etiquetaSaludo;
 	
 	//Caja texto del resultado
 	private JTextField etiquetaoperaciones;
@@ -76,22 +77,39 @@ public class Juego extends JPanel{
 	//Botones de control
 	private JButton botonsumar,botonrestar,botonMathdice;
 	
+	//Puntos del jugador
+	static int puntos=0;
 	
+	static JLabel etiquetaPuntos;
+	
+	//CONEXION
+	private JugadorDB udb;
+	private confDB db;
+	
+	Jugador j;
+	
+
 	
 	/**
 	 * Create the frame.
 	 */
 	
 	public Juego() {
-
+		
 		setLayout(null);
 		
 		//Etiqueta Saludo
 		etiquetaSaludo = new JLabel();
-		etiquetaSaludo.setText("BIENVENID@ AL JUEGO");
 		etiquetaSaludo.setBounds(550, 13, 258, 16);
 		add(etiquetaSaludo);
-
+		
+		//Etiqueta Puntos
+		etiquetaPuntos = new JLabel();
+		etiquetaPuntos.setBounds(550, 35, 130, 16);
+		add(etiquetaPuntos);
+		
+		
+		
 		//Etiqueta texto donde se introducen las sumas y restas
 		etiquetaoperaciones = new JTextField();
 		etiquetaoperaciones.setEditable(false);
@@ -220,6 +238,11 @@ public class Juego extends JPanel{
 								botonrepetir.setEnabled(true);
 								if (total==aleverde1+1){
 									etiquetaresultado.setText("El resultado es "+stringtotal+" HAS GANADO");
+									calcularPuntos(j);
+									j.setPuntos(puntos);
+									udb.actualizarUsuarioPreparada(j);
+									
+									
 								}
 								
 								else {
@@ -249,9 +272,35 @@ public class Juego extends JPanel{
 				botonrepetir.setBounds(907, 562, 484, 59);
 				add(botonrepetir);
 				
+			
 				inicializarBotones();	
+				
+				confDB.getConexion();
+				udb = new JugadorDB(db.getConexion());	
+				
+				
+	}
+	
+	
+	public void calcularPuntos(Jugador j1){
+		
+		puntos=puntos+1;
+		etiquetaPuntos.setText("TIENES: "+String.valueOf(puntos));
 		
 	}
+	
+	//ENVIAR SALUDOS
+	public void enviarSaludo(Jugador j1){
+		etiquetaSaludo.setText("Bienvenid@: "+j1.getNombre());
+	}
+	
+	public void inicializarPuntos(Jugador j1){
+		etiquetaPuntos.setText("TIENES: "+String.valueOf(j1.getPuntos())+" puntos");
+		puntos=j1.getPuntos();
+		System.out.println(puntos);
+	}	
+	
+	
 	
 	public void enviartexto (String a){
 		
@@ -281,6 +330,8 @@ public class Juego extends JPanel{
 	}
 	
 	public void inicializarBotones(){
+		
+	
 		
 		//Cargamos las imagenes en los arrays
 			for(int i=0;i<dados3.length;i++){
@@ -344,9 +395,11 @@ public class Juego extends JPanel{
 				etiquetaoperaciones.setText("");
 				etiquetaresultado.setText("");
 				total=0; // Acumulado de las operaciones
-		
-			
+				
+				
+				
 	}
+	
 	
 		
 	
@@ -398,8 +451,10 @@ public class Juego extends JPanel{
 						
 		
 		}
+					
 
-								
+					
+
 }
 
 	

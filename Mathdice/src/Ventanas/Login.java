@@ -75,6 +75,9 @@ public class Login extends JFrame {
 				conten1= new Contenedor();//Creamos Contenedor
 				conten1.setVisible(true);//Hacemos visible la ventana Contenedor
 				p1.rellenaDatos(j1);//Rellenamos datos de Perfil
+				cerrar.setVisible(false);
+				j2.inicializarPuntos(j1);
+				j2.enviarSaludo(j1);
 			}
 		});
 		botonEntrar.setBounds(142, 106, 97, 25);
@@ -115,6 +118,7 @@ public class Login extends JFrame {
 	}
 	
 	Jugador j1 = new Jugador();
-	Perfil p1 = new Perfil ();
+	Perfil p1 = new Perfil();
+	Juego j2 = new Juego();
 }
 
