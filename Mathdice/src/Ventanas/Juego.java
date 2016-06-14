@@ -239,8 +239,7 @@ public class Juego extends JPanel{
 								if (total==aleverde1+1){
 									etiquetaresultado.setText("El resultado es "+stringtotal+" HAS GANADO");
 									calcularPuntos(j);
-									j.setPuntos(puntos);
-									udb.actualizarUsuarioPreparada(j);
+									
 									
 									
 								}
@@ -278,15 +277,18 @@ public class Juego extends JPanel{
 				confDB.getConexion();
 				udb = new JugadorDB(db.getConexion());	
 				
-				
+				j=new Jugador();	
 	}
+	
+	
 	
 	
 	public void calcularPuntos(Jugador j1){
 		
 		puntos=puntos+1;
 		etiquetaPuntos.setText("TIENES: "+String.valueOf(puntos));
-		
+		j.setPuntos(puntos);
+		udb.actualizarUsuarioPreparada(j);
 	}
 	
 	//ENVIAR SALUDOS
@@ -449,7 +451,6 @@ public class Juego extends JPanel{
 							
 						}
 						
-		
 		}
 					
 
