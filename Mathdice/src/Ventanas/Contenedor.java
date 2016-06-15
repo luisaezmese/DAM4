@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Juego.Jugador;
 import Juego.JugadorDB;
 
 import java.awt.CardLayout;
@@ -19,14 +20,15 @@ import java.awt.event.ActionEvent;
 public class Contenedor extends JFrame {
 
 	private JPanel contentPane;
-
 	
+	Jugador j1;
+
 		//IDENTIFICADORES
 		final static String VENTANA1= "Ventana 1";
 		final static String VENTANA2= "Ventana 2";
 
 		
-		Juego v1=new Juego();
+		Juego v1=new Juego(j1);
 		Perfil v2=new Perfil();
 		
 		

@@ -42,7 +42,7 @@ public class Login extends JFrame {
 	//Ventana Contenedor
 	private Contenedor conten1;
 	
-	
+	private Jugador j1;
 	
 	
 	/**
@@ -112,13 +112,14 @@ public class Login extends JFrame {
 		confDB.getConexion();
 		
 		udb = new JugadorDB(db.getConexion());
+		
 		//Añadimos todos los usuarios de la BBDD
 		udb.buscarUsuario(comboBox);
 		
 	}
 	
-	Jugador j1 = new Jugador();
+	
 	Perfil p1 = new Perfil();
-	Juego j2 = new Juego();
+	Juego j2 = new Juego(j1);
 }
 

@@ -63,7 +63,7 @@ public class Juego extends JPanel{
 	private JLabel labeldado1_verde;
 	
 	//Etiqueta Saludo
-	static JLabel etiquetaSaludo;
+	JLabel etiquetaSaludo;
 	
 	//Caja texto del resultado
 	private JTextField etiquetaoperaciones;
@@ -78,24 +78,25 @@ public class Juego extends JPanel{
 	private JButton botonsumar,botonrestar,botonMathdice;
 	
 	//Puntos del jugador
-	static int puntos=0;
+	private int puntos;
 	
-	static JLabel etiquetaPuntos;
+	JLabel etiquetaPuntos;
 	
 	//CONEXION
 	private JugadorDB udb;
 	private confDB db;
 	
-	Jugador j;
 	
-
+	Jugador jugador;
+	
 	
 	/**
 	 * Create the frame.
 	 */
 	
-	public Juego() {
+	public Juego(Jugador j1) {
 		
+		jugador=j1;
 		setLayout(null);
 		
 		//Etiqueta Saludo
@@ -238,11 +239,9 @@ public class Juego extends JPanel{
 								botonrepetir.setEnabled(true);
 								if (total==aleverde1+1){
 									etiquetaresultado.setText("El resultado es "+stringtotal+" HAS GANADO");
-									calcularPuntos(j);
-									j.setPuntos(puntos);
-									udb.actualizarUsuarioPreparada(j);
-									
-									
+									calcularPuntos();
+									jugador.setPuntos(puntos);
+									udb.actualizarUsuarioPreparada(jugador);
 								}
 								
 								else {
@@ -275,16 +274,13 @@ public class Juego extends JPanel{
 			
 				inicializarBotones();	
 				
-				confDB.getConexion();
-				udb = new JugadorDB(db.getConexion());	
 				
-				j=new Jugador();	
 	}
 	
 	
 	
 	
-	public void calcularPuntos(Jugador j1){
+	public void calcularPuntos(){
 		
 		puntos=puntos+1;
 		etiquetaPuntos.setText("TIENES: "+String.valueOf(puntos));
@@ -299,9 +295,7 @@ public class Juego extends JPanel{
 	public void inicializarPuntos(Jugador j1){
 		etiquetaPuntos.setText("TIENES: "+String.valueOf(j1.getPuntos())+" puntos");
 		puntos=j1.getPuntos();
-		System.out.println(puntos);
 	}	
-	
 	
 	
 	public void enviartexto (String a){
@@ -453,7 +447,7 @@ public class Juego extends JPanel{
 						
 		}
 					
-
+						
 					
 
 }

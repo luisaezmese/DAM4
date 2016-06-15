@@ -83,6 +83,7 @@ public class JugadorDB{
 					      u.setEdad(rs.getInt("edad"));
 					      u.setPuntos(rs.getInt("puntos"));
 					      jc.addItem(u);
+					      
 				      }
 				      //Debemos cerrar la conexion
 				     
@@ -108,7 +109,7 @@ public class JugadorDB{
 					         se.printStackTrace();
 					      	 }//end finally try
 					       
-					      */	
+					      	*/
 					}
 					 
 				}
@@ -119,12 +120,7 @@ public class JugadorDB{
 					try{
 					  orden = conexion.createStatement();
 					// create the java mysql update preparedstatement
-				      String sql = "UPDATE usuarios "+
-			                       "SET nombre = ? "+
-			                       ",apellido1 = ? "+
-			                       ",apellido2 = ? "+
-			                       ",edad = ? "+
-			                       ",puntos = ? "+
+				      String sql = "UPDATE puntos "+
 				    		       "WHERE id = "+u.getId();
 				      PreparedStatement preparedStmt = conexion.prepareStatement(sql);
 				      preparedStmt.setString(1, u.getNombre());
@@ -132,9 +128,10 @@ public class JugadorDB{
 				      preparedStmt.setString(3, u.getApellido2());
 				      preparedStmt.setInt(4, u.getEdad());
 				      preparedStmt.setInt(5, u.getPuntos());
-				 
+				      System.out.println("SE HA ACTUALIZADO");
 				      // se ejecuta la consulta
 				      preparedStmt.executeUpdate();
+				      System.out.println("SE HA EJECUTADO LA CONSULTA");
 					}catch(SQLException se){
 						      //Se produce un error con la consulta
 						      se.printStackTrace();
@@ -143,7 +140,7 @@ public class JugadorDB{
 						      e.printStackTrace();
 					}finally{
 					      //Cerramos los recursos
-						/*
+						
 					      try{
 					         if(orden!=null)
 					        	 conexion.close();
@@ -155,7 +152,7 @@ public class JugadorDB{
 					      	 }catch(SQLException se){
 					         se.printStackTrace();
 					      	 }//end finally try
-				*/	       
+					       
 					}			
 				}		
 				
