@@ -20,16 +20,13 @@ import java.awt.event.ActionEvent;
 public class Contenedor extends JFrame {
 
 	private JPanel contentPane;
-	
-	Jugador j1;
 
 		//IDENTIFICADORES
 		final static String VENTANA1= "Ventana 1";
 		final static String VENTANA2= "Ventana 2";
 
 		
-		Juego v1=new Juego(j1);
-		Perfil v2=new Perfil();
+		
 		
 		
 
@@ -37,7 +34,11 @@ public class Contenedor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Contenedor() {
+	public Contenedor(Jugador j1) {
+		
+		Juego v1=new Juego(j1);
+		Perfil v2=new Perfil(j1);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1800, 881);
 		

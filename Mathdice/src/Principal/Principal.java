@@ -16,6 +16,7 @@ public class Principal {
 		
 			Login ventanaLogin = new Login();
 			ventanaLogin.setVisible(true);
+			
 		
 	}
 

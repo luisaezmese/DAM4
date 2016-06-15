@@ -21,7 +21,7 @@ public class Perfil extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public Perfil() {
+	public Perfil(Jugador j1) {
 		setLayout(null);
 		
 	
@@ -82,16 +82,16 @@ public class Perfil extends JPanel {
 		imagenPerfil.setBounds(38, 45, 200, 216);
 		add(imagenPerfil);
 		
-		
-		
-	}
-	public void rellenaDatos(Jugador j1){
-		
 		CajaNombre.setText(j1.getNombre());
 		CajaApellido1.setText(j1.getApellido1());
 		CajaApellido2.setText(j1.getApellido2());
 		CajaEdad.setText(String.valueOf(j1.getEdad()));
 	
+		
 	}
+	
+		
+		
+	
 	
 }

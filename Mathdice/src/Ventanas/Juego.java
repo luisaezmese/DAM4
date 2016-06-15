@@ -79,16 +79,14 @@ public class Juego extends JPanel{
 	
 	//Puntos del jugador
 	private int puntos;
-	
+	private int id;
 	JLabel etiquetaPuntos;
 	
 	//CONEXION
 	private JugadorDB udb;
 	private confDB db;
 	
-	
-	Jugador jugador;
-	
+	Jugador jugadorActivo;
 	
 	/**
 	 * Create the frame.
@@ -96,7 +94,8 @@ public class Juego extends JPanel{
 	
 	public Juego(Jugador j1) {
 		
-		jugador=j1;
+		jugadorActivo=j1;
+		
 		setLayout(null);
 		
 		//Etiqueta Saludo
@@ -240,8 +239,10 @@ public class Juego extends JPanel{
 								if (total==aleverde1+1){
 									etiquetaresultado.setText("El resultado es "+stringtotal+" HAS GANADO");
 									calcularPuntos();
-									jugador.setPuntos(puntos);
-									udb.actualizarUsuarioPreparada(jugador);
+									System.out.println(jugadorActivo.getPuntos());
+									udb.actualizarUsuarioPreparada(jugadorActivo);
+									
+									
 								}
 								
 								else {
@@ -274,27 +275,29 @@ public class Juego extends JPanel{
 			
 				inicializarBotones();	
 				
+				udb = new JugadorDB(db.getConexion());
+				
+				mostrarPuntos();
 				
 	}
 	
 	
-	
-	
 	public void calcularPuntos(){
 		
-		puntos=puntos+1;
-		etiquetaPuntos.setText("TIENES: "+String.valueOf(puntos));
+		jugadorActivo.setPuntos(jugadorActivo.getPuntos()+1);
+		etiquetaPuntos.setText("TIENES: "+String.valueOf(jugadorActivo.getPuntos()));
 		
 	}
 	
 	//ENVIAR SALUDOS
-	public void enviarSaludo(Jugador j1){
-		etiquetaSaludo.setText("Bienvenid@: "+j1.getNombre());
+	public void enviarSaludo(){
+		etiquetaSaludo.setText("Bienvenid@: "+jugadorActivo.getNombre());
 	}
 	
-	public void inicializarPuntos(Jugador j1){
-		etiquetaPuntos.setText("TIENES: "+String.valueOf(j1.getPuntos())+" puntos");
-		puntos=j1.getPuntos();
+	public void mostrarPuntos(){
+		
+		etiquetaPuntos.setText("TIENES: "+String.valueOf(jugadorActivo.getPuntos())+" puntos");
+		
 	}	
 	
 	
@@ -446,8 +449,7 @@ public class Juego extends JPanel{
 						}
 						
 		}
-					
-						
+							
 					
 
 }

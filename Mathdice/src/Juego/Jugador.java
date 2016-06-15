@@ -11,9 +11,9 @@ public class Jugador {
 		private int id;
 	
 	//CONSTRUCTOR	
-	public Jugador(){
+	//public Jugador(){
 		
-	}
+//	}
 	
 	//DEFINO EL METODO id
 	public int getId() {

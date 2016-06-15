@@ -42,7 +42,8 @@ public class Login extends JFrame {
 	//Ventana Contenedor
 	private Contenedor conten1;
 	
-	private Jugador j1;
+	
+	Jugador j1;
 	
 	
 	/**
@@ -72,12 +73,11 @@ public class Login extends JFrame {
 		JButton botonEntrar = new JButton("ENTRAR");
 		botonEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				conten1= new Contenedor();//Creamos Contenedor
-				conten1.setVisible(true);//Hacemos visible la ventana Contenedor
-				p1.rellenaDatos(j1);//Rellenamos datos de Perfil
+				
 				cerrar.setVisible(false);
-				j2.inicializarPuntos(j1);
-				j2.enviarSaludo(j1);
+				conten1= new Contenedor(j1);//Creamos Contenedor
+				conten1.setVisible(true);//Hacemos visible la ventana Contenedor
+				
 			}
 		});
 		botonEntrar.setBounds(142, 106, 97, 25);
@@ -116,10 +116,18 @@ public class Login extends JFrame {
 		//Añadimos todos los usuarios de la BBDD
 		udb.buscarUsuario(comboBox);
 		
+		
+	}
+	
+	public Jugador getJugadorActivo (){
+		
+		return j1;
 	}
 	
 	
-	Perfil p1 = new Perfil();
-	Juego j2 = new Juego(j1);
+	
+	
+	
+	
 }
 
