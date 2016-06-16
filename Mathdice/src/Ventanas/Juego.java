@@ -237,12 +237,14 @@ public class Juego extends JPanel{
 								etiquetaresultado.setText(stringtotal);
 								botonrepetir.setEnabled(true);
 								if (total==aleverde1+1){
+									if(botonMathdice.isEnabled()==true){
+										
+										calcularPuntos();
+										udb.actualizarUsuarioPreparada(jugadorActivo);
+										botonrepetir.setEnabled(true);
+									}
+									botonMathdice.setEnabled(false);
 									etiquetaresultado.setText("El resultado es "+stringtotal+" HAS GANADO");
-									calcularPuntos();
-									System.out.println(jugadorActivo.getPuntos());
-									udb.actualizarUsuarioPreparada(jugadorActivo);
-									
-									
 								}
 								
 								else {
@@ -264,7 +266,8 @@ public class Juego extends JPanel{
 				botonrepetir.addActionListener(new ActionListener(){
 							public void actionPerformed(ActionEvent arg0){
 								inicializarBotones();
-								botonrepetir.setEnabled(false);
+								//botonrepetir.setEnabled(false);
+								botonMathdice.setEnabled(true);
 							}
 						
 					});
@@ -327,10 +330,7 @@ public class Juego extends JPanel{
 		
 		
 	}
-	
 	public void inicializarBotones(){
-		
-	
 		
 		//Cargamos las imagenes en los arrays
 			for(int i=0;i<dados3.length;i++){

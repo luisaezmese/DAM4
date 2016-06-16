@@ -109,7 +109,7 @@ public class Login extends JFrame {
 		
 		
 		//Conexión a la BBDD
-		confDB.getConexion();
+		//confDB.getConexion();
 		
 		udb = new JugadorDB(db.getConexion());
 		

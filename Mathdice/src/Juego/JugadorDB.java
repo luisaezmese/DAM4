@@ -49,7 +49,7 @@ public class JugadorDB{
 				      e.printStackTrace();
 			   }finally{
 				      //Cerramos los recursos
-				   
+				   /*
 				      try{
 				         if(orden!=null)
 				        	 conexion.close();
@@ -61,7 +61,7 @@ public class JugadorDB{
 				      	 }catch(SQLException se){
 				         se.printStackTrace();
 				      }//end finally try
-				      
+				     */ 
 				}//end try
 			
 			
@@ -137,9 +137,7 @@ public class JugadorDB{
 				      preparedStmt.setString(2, u.getApellido1());
 				      preparedStmt.setString(3, u.getApellido2());
 				      preparedStmt.setInt(4, u.getEdad());
-				      System.out.println("ACTUALIZAR "+u.getPuntos());
 				      preparedStmt.setInt(5, u.getPuntos());
-				      System.out.println("ACTUALIZAR DESPUES "+u.getPuntos());
 				 
 				      // se ejecuta la consulta
 				      preparedStmt.executeUpdate();
@@ -163,9 +161,40 @@ public class JugadorDB{
 					      	 }catch(SQLException se){
 					         se.printStackTrace();
 					      	 }//end finally try
-					      	*/ 
+					      */	
 					}			
 				}
 				
-
+				public Jugador buscarUsuario2(){
+					ResultSet rs;
+					Jugador u=new Jugador();
+					try{
+					  orden = conexion.createStatement();
+				      String sql = "SELECT id, nombre, apellido1, apellido2, edad, puntos FROM usuarios";
+				      rs = orden.executeQuery(sql);
+				      //Cogemos los usuarios
+				      while(rs.next()){
+				    	  
+				    	  u.setId(rs.getInt("id"));
+					      u.setNombre(rs.getString("nombre"));
+					      u.setApellido1(rs.getString("apellido1"));
+					      u.setApellido2(rs.getString("apellido2"));
+					      u.setEdad(rs.getInt("edad"));
+					      u.setPuntos(rs.getInt("puntos"));  
+					      
+				      }
+				      //Debemos cerrar la conexion
+				     
+				      rs.close();
+					}catch(SQLException se){
+						      //Se produce un error con la consulta
+						      se.printStackTrace();
+					}catch(Exception e){
+						      //Se produce cualquier otro error
+						      e.printStackTrace();
+					}finally{
+				
+				}
+					return u;
+			}
 }

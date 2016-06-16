@@ -39,18 +39,20 @@ public class Registro extends JFrame{
 	private JugadorDB udb;
 	
 	JButton botonDatos;
-
+	Jugador j1 =new Jugador();
 	
 	
 	// Constructor
 	// Punto de entrada que se ejecuta al crear un objeto de tipo Juagador
 	public Registro() {
-			
+		
+		
+		
 		//Conexión a la BBDD
 		
 		udb = new JugadorDB(confDB.getConexion());
 		
-		Jugador j1 =new Jugador();
+		
 		
 		//Hacemos referencia cerrar
 			cerrar=this;
@@ -141,7 +143,7 @@ public class Registro extends JFrame{
 							
 							//Insertamos los datos en la BBDD
 							udb.insertarUsuario(textoNombre.getText(),textoApellido1.getText(),textoApellido2.getText(),Integer.valueOf(textoEdad.getText()),0);
-							
+							j1=udb.buscarUsuario2();
 							j1.setNombre(textoNombre.getText());
 							j1.setApellido1(textoApellido1.getText());
 							j1.setApellido2(textoApellido2.getText());
@@ -154,6 +156,8 @@ public class Registro extends JFrame{
 							cerrar.setVisible(false);
 							//Abrimos la ventana Juego
 							conten1.setVisible(true);	
+							
+							
 							
 							//Enviamos los  datos a Perfil
 							Perfil.CajaNombre.setText(textoNombre.getText());
